@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ECGCare API Explorer</title>
+  <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+  <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+  <link href='css/print.css' media='print' rel='stylesheet' type='text/css'/>
+  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='lib/handlebars-2.0.0.js' type='text/javascript'></script>
+  <script src='lib/underscore-min.js' type='text/javascript'></script>
+  <script src='lib/backbone-min.js' type='text/javascript'></script>
+  <script src='swagger-ui.min.js' type='text/javascript'></script>
+  <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+  <script src='lib/marked.js' type='text/javascript'></script>
+  <script src='lib/swagger-oauth.js' type='text/javascript'></script>
+
+<!-- Some basic translations -->
+<script src='lang/translator.js' type='text/javascript'></script>
+<!-- <script src='lang/ru.js' type='text/javascript'></script> -->
+<!-- <script src='lang/en.js' type='text/javascript'></script> -->
+
+
+<script src='lang/cn.js' type='text/javascript'></script>
+  <script type="text/javascript">
+    $(function () {
+      var url = window.location.search.match(/url=([^&]+)/);
+      if (url && url.length > 1) {
+        url = decodeURIComponent(url[1]);
+      } else {
+          url = "/swagger/swagger.json";
+      }
+
+      // Pre load translate...
+      if(window.SwaggerTranslator) {
+        window.SwaggerTranslator.translate();
+      }
+      window.swaggerUi = new SwaggerUi({
+        url: url,
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+          
+        onComplete: function (swaggerApi, swaggerUi) {
+
+          if(typeof initOAuth == "function") {
+            initOAuth({
+              clientId: "your-client-id",
+              clientSecret: "your-client-secret",
+              realm: "your-realms",
+              appName: "your-app-name", 
+              scopeSeparator: ","
+            });
+          }
+
+          if(window.SwaggerTranslator) {
+            window.SwaggerTranslator.translate();
+          }
+
+          $('pre code').each(function(i, e) {
+            hljs.highlightBlock(e)
+          });
+          addApiKeyAuthorization();
+            
+
+// 显示API标题 zhangxx 11:33 2017-07-11
+setTimeout(function () {
+	var titles=[];
+	$(".endpoints .endpoint .operations li .content").each(function () {
+		var html=$(this).children(".markdown:first").text();
+		titles.push(html);
+		$(this).children("h4:first").css("display","none");
+		$(this).children(".markdown:first").css("display","none");
+	});
+	titles=titles.reverse();
+	$(".endpoints .endpoint .operations li .heading .options").each(function () {
+		$(this).append(titles.pop());
+	});
+	
+},300);
+
+/*
+            // zhangxx 11:33 2016-07-25
+            setTimeout(function () {
+                //var args = $(".content .sandbox h4").html();
+                $(".content .response-content-type").css('float', 'right');
+                $(".content p").css('display', 'none');
+                $(".content br").remove();
+
+                ////var html = $(".content h4").html();
+                ////$(".content h4").html(html + "&nbsp;&nbsp;<a href=\"javascript: $('.content p .model-signature').toggle();\"><b>\u663e\u793a</b></a>&nbsp;&nbsp;");
+                
+                //////$(".content h4").siblings('.response-content-type').css("background-color", "blue").html();
+
+                ////$(".content h4").each(function () {
+                ////    //$(this).siblings('.response-content-type').css("background-color", "blue");
+                ////    //alert($(this).html());
+                ////    $(this).append($(this).siblings('.response-content-type'));
+                ////});
+                
+                $(".content").children('h4').each(function () {
+                    $(this)
+                        .append("&nbsp;&nbsp;<a href=\"javascript: void(0);\" onclick=\"$(this).parent().siblings('p').toggle();\"><b>\u663e\u793a\u002f\u9690\u85cf</b></a>&nbsp;&nbsp;")
+                        .append($(this).siblings('.response-content-type'));
+
+
+                    //alert(
+                    //    $(this).parent().children("form").children('.sandbox_header').children(':button') //.submit
+                    //    .attr('class')
+                    //);
+
+                    $(this).parent().children("form").children('.sandbox_header').children(':button')
+                    .click(function () {
+                        setTimeout(function () {
+                            //[
+                            //    { ele: ".curl", txt: "Curl" },
+                            //    { ele: ".response_code", txt: "\u54cd\u5e94\u7801" },
+                            //    { ele: ".response_headers", txt: "\u54cd\u5e94\u5934" }
+                            //].forEach(function(item) {
+                            //    eval('$(".content .response {ele}").hide().prev().html("{txt}&nbsp;&nbsp;<a href=\"javascript: void(0);\" onclick=\"$(this).parent().siblings(\"{ele}\").toggle();\"><b>\u663e\u793a\u002f\u9690\u85cf</b></a>&nbsp;&nbsp;")'
+                            //    .replace(new RegExp("{ele}", "gm"), item.ele)
+                            //    .replace(new RegExp("{txt}", "gm"), item.txt)
+                            //    );
+                            //});
+
+                            $(".content .response .curl"            ).hide().prev().html("Curl              &nbsp;&nbsp;<a href=\"javascript: void(0);\" onclick=\"$(this).parent().siblings('.curl'            ).toggle();\"><b>\u663e\u793a\u002f\u9690\u85cf</b></a>&nbsp;&nbsp;");
+                            $(".content .response .response_code"   ).hide().prev().html("\u54cd\u5e94\u7801&nbsp;&nbsp;<a href=\"javascript: void(0);\" onclick=\"$(this).parent().siblings('.response_code'   ).toggle();\"><b>\u663e\u793a\u002f\u9690\u85cf</b></a>&nbsp;&nbsp;");
+                            $(".content .response .response_headers").hide().prev().html("\u54cd\u5e94\u5934&nbsp;&nbsp;<a href=\"javascript: void(0);\" onclick=\"$(this).parent().siblings('.response_headers').toggle();\"><b>\u663e\u793a\u002f\u9690\u85cf</b></a>&nbsp;&nbsp;");
+                        }, 800);
+                    });
+                });
+                //$(".content .sandbox h4").html(args);
+
+
+
+
+
+            }, 300);
+*/
+
+
+            
+
+          
+            //<a href=\"javascript:alert( $('.content p').css('display') );\">显示响应对象</a>
+            //<div class="content" id="users_users_Create_content">
+            //  <h4><span data-sw-translate="">响应对象</span> (<span data-sw-translate="">状态</span> 200)</h4>
+            //  <p><span class="model-signature"><div><div>
+
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        apisSorter: "alpha",
+        showRequestHeaders: false
+      });
+
+
+      
+
+      function addApiKeyAuthorization(){
+        //var key = encodeURIComponent($('#input_apiKey')[0].value);
+        //if(key && key.trim() != "") {
+        //    var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
+        //    window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+        //    log("added key " + key);
+        //}
+      }
+
+      $('#input_apiKey').change(addApiKeyAuthorization);
+
+      // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
+      /*
+        var apiKey = "myApiKeyXXXX123456789";
+        $('#input_apiKey').val(apiKey);
+      */
+
+      window.swaggerUi.load();
+
+      function log() {
+        if ('console' in window) {
+          console.log.apply(console, arguments);
+        }
+      }
+  });
+
+    
+    function assistant() {
+        var ak = document.getElementById('curAccessKey').value;
+        var eles = document.getElementsByName('accessKey');
+        for (var n = 0; n < eles.length; n++) {
+            eles[n].value = ak;
+        }
+    }
+
+  </script>
+</head>
+
+<body class="swagger-section">
+    <div id='header' style="background: #f0f0f0;position:fixed;width:100%;">
+        <div class="swagger-ui-wrap">
+            <!-- a id="logo" href="http://swagger.io"  >swagger</a -->
+            <a href="http://www.etcomm.cn/" ><img src="http://www.etcomm.cn/img/logo.png" /></a>
+            <form id='api_selector'>
+                <!-- 
+                    <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
+                    <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+                    <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
+                    -->
+                <div class='input'><input id="curAccessKey" placeholder="AccessKey" type="text"/></div>
+                <div class='input'><a href="javascript:assistant();" data-sw-translate>apply</a></div>
+            </form>
+        </div>
+    </div>
+    <div id="message-bar" class="swagger-ui-wrap" data-sw-translate style="padding-top:50px">&nbsp;</div>
+    <div id="swagger-ui-container" class="swagger-ui-wrap">
+    </div>
+</body>
+</html>

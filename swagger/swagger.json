@@ -1,0 +1,862 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "beego Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/comm/GetChargingRules": {
+            "post": {
+                "tags": [
+                    "comm"
+                ],
+                "description": "获取资源类型",
+                "operationId": "CommController.获取资源类型",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/comm/GetIndustryList": {
+            "post": {
+                "tags": [
+                    "comm"
+                ],
+                "description": "获取行业列表",
+                "operationId": "CommController.获取行业列表",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/comm/GetResourceTypes": {
+            "post": {
+                "tags": [
+                    "comm"
+                ],
+                "description": "获取资源类型",
+                "operationId": "CommController.获取资源类型",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/dbg/MyDebug": {
+            "post": {
+                "tags": [
+                    "dbg"
+                ],
+                "description": "函数描述",
+                "operationId": "DbgController.函数标题",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/.ParamsList"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/mgr/CreateCarousel": {
+            "post": {
+                "tags": [
+                    "mgr"
+                ],
+                "description": "创建轮播图",
+                "operationId": "MgrController.创建轮播图",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.CreateCarousel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/mgr/CreateContent": {
+            "post": {
+                "tags": [
+                    "mgr"
+                ],
+                "description": "创建内容",
+                "operationId": "MgrController.创建内容",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.CreateContent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/mgr/CreateSpecial": {
+            "post": {
+                "tags": [
+                    "mgr"
+                ],
+                "description": "创建专题",
+                "operationId": "MgrController.创建专题",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.CreateSpecial"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/mgr/CreateTopic": {
+            "post": {
+                "tags": [
+                    "mgr"
+                ],
+                "description": "创建栏目",
+                "operationId": "MgrController.创建栏目",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.CreateTopic"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/mgr/GetUserList": {
+            "post": {
+                "tags": [
+                    "mgr"
+                ],
+                "description": "获取用户列表",
+                "operationId": "MgrController.获取用户列表",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.GetUserList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/mgr/UploadResource": {
+            "post": {
+                "tags": [
+                    "mgr"
+                ],
+                "description": "上传资源",
+                "operationId": "MgrController.上传资源",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/show/GetContentList": {
+            "post": {
+                "tags": [
+                    "show"
+                ],
+                "description": "获取内容列表",
+                "operationId": "ShowController.获取内容列表",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.GetContentList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/show/GetSpecialList": {
+            "post": {
+                "tags": [
+                    "show"
+                ],
+                "description": "获取专题列表",
+                "operationId": "ShowController.获取专题列表",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.GetSpecialList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/show/GetTopicList": {
+            "post": {
+                "tags": [
+                    "show"
+                ],
+                "description": "获取栏目列表",
+                "operationId": "ShowController.获取栏目列表",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.GetTopicList"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/ForgotPassword": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "找回密码",
+                "operationId": "UserController.找回密码",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "user info",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.ForgotPassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/GetUserInfo": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "获取用户信息",
+                "operationId": "UserController.获取用户信息",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "accessKey",
+                        "description": "参数描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/Login": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "登录",
+                "operationId": "UserController.登录",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/RegisterUser": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "注册用户",
+                "operationId": "UserController.注册",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "user info",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.RegisterUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/ResetPassword": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "重置密码",
+                "operationId": "UserController.重置密码",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "参数描述",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.ResetPassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/VerifyPhone": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "description": "验证手机",
+                "operationId": "UserController.注册",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "args",
+                        "description": "user info",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/bll.VerifyPhone"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/zfx.Resp"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        ".ParamsList": {
+            "type": "object"
+        },
+        ".false": {
+            "type": "object"
+        },
+        "bll.CreateCarousel": {
+            "title": "CreateCarousel",
+            "type": "object",
+            "properties": {
+                "ImageUrl": {
+                    "type": "string"
+                },
+                "ShowcaseUniqueId": {
+                    "type": "string"
+                },
+                "SortIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Title": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.CreateContent": {
+            "title": "CreateContent",
+            "type": "object",
+            "properties": {
+                "ChargingRule": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Days": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Price": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ResourceType": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ResourceUrl": {
+                    "type": "string"
+                },
+                "SpecialUniqueId": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.CreateSpecial": {
+            "title": "CreateSpecial",
+            "type": "object",
+            "properties": {
+                "Cover": {
+                    "type": "string"
+                },
+                "Introduce": {
+                    "type": "string"
+                },
+                "Provider": {
+                    "type": "string"
+                },
+                "Title": {
+                    "type": "string"
+                },
+                "TopicName": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.CreateTopic": {
+            "title": "CreateTopic",
+            "type": "object",
+            "properties": {
+                "Title": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.ForgotPassword": {
+            "title": "ForgotPassword",
+            "type": "object",
+            "properties": {
+                "Phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.GetContentList": {
+            "title": "GetContentList",
+            "type": "object",
+            "properties": {
+                "PageIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SpecialUniqueId": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.GetSpecialList": {
+            "title": "GetSpecialList",
+            "type": "object",
+            "properties": {
+                "PageIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "TopicName": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.GetTopicList": {
+            "title": "GetTopicList",
+            "type": "object",
+            "properties": {
+                "PageIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "bll.GetUserList": {
+            "title": "GetUserList",
+            "type": "object",
+            "properties": {
+                "PageIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.Login": {
+            "title": "Login",
+            "type": "object",
+            "properties": {
+                "LoginName": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.RegisterUser": {
+            "title": "RegisterUser",
+            "type": "object",
+            "properties": {
+                "Password": {
+                    "type": "string"
+                },
+                "Phone": {
+                    "type": "string"
+                },
+                "UserName": {
+                    "type": "string"
+                },
+                "Vcode": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.ResetPassword": {
+            "title": "ResetPassword",
+            "type": "object",
+            "properties": {
+                "Password": {
+                    "type": "string"
+                },
+                "Phone": {
+                    "type": "string"
+                },
+                "Vcode": {
+                    "type": "string"
+                }
+            }
+        },
+        "bll.VerifyPhone": {
+            "title": "VerifyPhone",
+            "type": "object",
+            "properties": {
+                "Phone": {
+                    "type": "string"
+                }
+            }
+        },
+        "zfx.Resp": {
+            "title": "Resp",
+            "type": "object",
+            "properties": {
+                "Data": {
+                    "$ref": "#/definitions/17339.0xc0422ba900.false"
+                },
+                "Error": {
+                    "type": "string"
+                },
+                "PageMax": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ResType": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "pageIndex": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "users",
+            "description": "用户相关\n"
+        },
+        {
+            "name": "mgr",
+            "description": "管理相关\n"
+        },
+        {
+            "name": "comm",
+            "description": "公共相关\n"
+        },
+        {
+            "name": "dbg",
+            "description": "调试相关\n"
+        },
+        {
+            "name": "show",
+            "description": "业务相关\n"
+        }
+    ]
+}
